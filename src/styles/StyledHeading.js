@@ -17,7 +17,7 @@ const StyledHeading = ({ title }) => {
     return (
         <section css={heading}>
             <h2 css={headingH2}>{title}</h2>
-            <img src="./assets/bottom_line2.png" alt="Underline" />
+            <img src="/assets/bottom_line2.png" alt="Underline" />
         </section>
     );
 };
