@@ -7,7 +7,9 @@ const Banner = ({ title }) => {
         background-size: cover;
         width: 100%;
         height: 10em;
-        position: relative;
+        @media (max-width: 600px) {
+            height: 15em;
+        }
     `;
 
     const overlay = css`
@@ -15,7 +17,7 @@ const Banner = ({ title }) => {
         opacity: 0.85;
         height: 100%;
         width: 100%;
-        position: absolute;
+        position: relative;
     `;
 
     const absolute = css`
@@ -23,19 +25,40 @@ const Banner = ({ title }) => {
         position: absolute;
         z-index: 10;
         text-align: center;
-        top: 30%;
-        left: 36%;
+        top: 32%;
+        width: 100%;
+        margin: 0 auto;
+        @media (max-width: 600px) {
+            top: 40%;
+        }
     `;
 
     const noSpace = css`
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
     `;
 
     return (
         <header css={background}>
-            <div css={overlay}></div>
-            <div css={absolute}>
+            <div css={overlay}>
+                <div css={absolute}>
+                    <h1 css={noSpace}>{title}</h1>
+                    <img
+                        css={noSpace}
+                        src="./assets/bottom_line2.png"
+                        alt="Underline"
+                    />
+                </div>
+            </div>
+        </header>
+    );
+};
+
+export default Banner;
+
+/**
+ * 
+ * <div css={absolute}>
                 <h1 css={noSpace}>{title}</h1>
                 <img
                     css={noSpace}
@@ -43,8 +66,4 @@ const Banner = ({ title }) => {
                     alt="Underline"
                 />
             </div>
-        </header>
-    );
-};
-
-export default Banner;
+ */
