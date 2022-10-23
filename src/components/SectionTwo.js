@@ -12,6 +12,11 @@ const SectionTwo = () => {
         max-width: 65em;
         margin: 0 auto;
         padding-bottom: 2.5em;
+        @media (max-width: 600px) {
+            max-width: 30rem;
+            margin: 0 auto;
+            padding: 0 0.5rem;
+        }
     `;
 
     const responsive = {
@@ -21,7 +26,7 @@ const SectionTwo = () => {
             slidesToSlide: 2,
         },
         mobile: {
-            breakpoint: { max: 464, min: 0 },
+            breakpoint: { max: 600, min: 0 },
             items: 1,
             slidesToSlide: 1,
         },

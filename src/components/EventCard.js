@@ -7,6 +7,9 @@ const EventCard = ({ event }) => {
         list-style: none;
         margin-bottom: 2em;
         position: relative;
+        @media (max-width: 600px) {
+            margin-bottom: 1.2rem;
+        }
     `;
 
     const eventImg = css`

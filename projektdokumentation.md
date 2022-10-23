@@ -100,3 +100,7 @@ const StyledHeading = ({ title }) => {
     );
 };
 ```
+
+## Opdateringer:
+
+Projektet er ved at blive opdateret..
