@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "image": "./assets/content-img/thumb1.jpg",
+        "description": "Night Club",
+        "icon": "./assets/icon/favicon.png",
+        "content":
+            "I'm baby vegan echo park organic intelligentsia. Chia seitan poke, ugh ennui gochujang +1 franzen slow-carb master cleanse tumblr..."
+    },
+    {
+        "id": 2,
+        "image": "./assets/content-img/reastaurant_1.jpg",
+        "description": "Restaurant",
+        "icon": "./assets/icon/favicon.png",
+        "content":
+            "I'm baby vegan echo park organic intelligentsia. Chia seitan poke, ugh ennui gochujang +1 franzen slow-carb master cleanse tumblr..."
+    },
+    {
+        "id": 3,
+        "image": "./assets/content-img/thumb2.jpg",
+        "description": "Bar",
+        "icon": "./assets/icon/favicon.png",
+        "content":
+            "I'm baby vegan echo park organic intelligentsia. Chia seitan poke, ugh ennui gochujang +1 franzen slow-carb master cleanse tumblr..."
+    }
+]
