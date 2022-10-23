@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import SinglePost from "./views/SinglePost";
 import DateProvider from "./contexts/DateContext";
+import Sandbox from "./views/Sandbox";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/blog/:id" element={<SinglePost />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="*" element={<NotFound />} />
+                    <Route path="/sandbox" element={<Sandbox />} />
                 </Routes>
                 <Footer />
             </HelmetProvider>
