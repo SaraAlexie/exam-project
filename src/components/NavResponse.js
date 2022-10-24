@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import { DimensionContext } from "../contexts/DimensionContext";
 import Navlinks from "./NavLinks";
 
 const NavResponse = () => {
@@ -18,15 +19,8 @@ const NavResponse = () => {
         font-size: 2.5rem;
     `;
 
-    const [dimension, setDimension] = useState({ width: window.innerWidth });
+    const { dimension } = useContext(DimensionContext);
     const [open, setOpen] = useState(false);
-
-    useEffect(() => {
-        function handleResize() {
-            setDimension({ width: window.innerWidth });
-        }
-        window.addEventListener("resize", handleResize);
-    }, []);
 
     const handleOpen = () => {
         setOpen(!open);

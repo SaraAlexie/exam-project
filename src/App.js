@@ -10,31 +10,34 @@ import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import SinglePost from "./views/SinglePost";
 import DateProvider from "./contexts/DateContext";
+import DimensionProvider from "./contexts/DimensionContext";
 import Sandbox from "./views/Sandbox";
 
 function App() {
     return (
-        <DateProvider>
-            <HelmetProvider>
-                <Helmet>
-                    <meta charSet="utf-8" />
-                    <title>Night Club</title>
-                    <link rel="icon" type="image/png" href="/favicon.ico" />
-                </Helmet>
-                <GlobalStyles />
-                <Hero />
-                <NavBar />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/blog/:id" element={<SinglePost />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="*" element={<NotFound />} />
-                    <Route path="/sandbox" element={<Sandbox />} />
-                </Routes>
-                <Footer />
-            </HelmetProvider>
-        </DateProvider>
+        <DimensionProvider>
+            <DateProvider>
+                <HelmetProvider>
+                    <Helmet>
+                        <meta charSet="utf-8" />
+                        <title>Night Club</title>
+                        <link rel="icon" type="image/png" href="/favicon.ico" />
+                    </Helmet>
+                    <GlobalStyles />
+                    <Hero />
+                    <NavBar />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/blog/:id" element={<SinglePost />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="*" element={<NotFound />} />
+                        <Route path="/sandbox" element={<Sandbox />} />
+                    </Routes>
+                    <Footer />
+                </HelmetProvider>
+            </DateProvider>
+        </DimensionProvider>
     );
 }
 
