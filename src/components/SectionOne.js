@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import CantLoad from "./CantLoad";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import ImgCard from "./ImgCard";
+import { ImagesContext } from "../contexts/ImagesContext";
 
 const SectionOne = () => {
     const eventGrid = css`
@@ -18,13 +18,7 @@ const SectionOne = () => {
         }
     `;
 
-    const [images, setImages] = useState();
-
-    useEffect(() => {
-        axios("./assets/eventimages.json").then((response) =>
-            setImages(response.data)
-        );
-    }, []);
+    const { images } = useContext(ImagesContext);
 
     return images ? (
         <section>
