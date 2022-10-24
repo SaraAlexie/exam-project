@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 const ImgCard = ({ img }) => {
     const relative = css`
         position: relative;
+        list-style: none;
         @media (max-width: 600px) {
             width: 17rem;
             margin: 0 auto 0.5rem;
