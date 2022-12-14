@@ -14,7 +14,6 @@ const EventCard = ({ event }) => {
 
     const eventImg = css`
         height: 18em;
-        width: 100%;
         padding: 0;
         margin: 0;
     `;

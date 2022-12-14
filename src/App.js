@@ -13,6 +13,7 @@ import DateProvider from "./contexts/DateContext";
 import DimensionProvider from "./contexts/DimensionContext";
 import ImagesProvider from "./contexts/ImagesContext";
 import Sandbox from "./views/Sandbox";
+import OtherSandbox from "./views/OtherSandbox";
 
 function App() {
     return (
@@ -39,6 +40,10 @@ function App() {
                             <Route path="/contact" element={<Contact />} />
                             <Route path="*" element={<NotFound />} />
                             <Route path="/sandbox" element={<Sandbox />} />
+                            <Route
+                                path="/othersandbox"
+                                element={<OtherSandbox />}
+                            />
                         </Routes>
                         <Footer />
                     </HelmetProvider>

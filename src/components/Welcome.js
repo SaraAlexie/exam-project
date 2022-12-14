@@ -5,7 +5,6 @@ import SectionOne from "./SectionOne";
 const Welcome = () => {
     const section = css`
         padding: 2.5em 0;
-        //background-image: url("./assets/bg/main_bg.png");
         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
             url("./assets/patern/canvas-orange.jpg");
         background-size: cover;
