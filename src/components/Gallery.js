@@ -1,15 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { DimensionContext } from "../contexts/DimensionContext";
 import { Animated } from "react-animated-css";
 import { useInView } from "react-intersection-observer";
 import StyledHeading from "../styles/StyledHeading";
 import axios from "axios";
 import Carousel from "react-elastic-carousel";
 import CantLoad from "./CantLoad";
+import GalleryBtn from "./GalleryBtn";
+import GalleryImgs from "./GalleryImgs";
 
 const Gallery = () => {
     const [gallery, setGallery] = useState(false);
+    const { dimension } = useContext(DimensionContext);
 
     const imgList = css`
         max-width: 65em;
@@ -17,26 +21,10 @@ const Gallery = () => {
         display: ${!gallery ? "grid" : "none"};
         grid-template-columns: repeat(7, 1fr);
         list-style: none;
-    `;
-
-    const galleryImg = css`
-        height: ${!gallery ? "5em" : "20em"};
-    `;
-
-    const btnSection = css`
-        text-align: center;
-        margin-bottom: 2em;
-    `;
-
-    const viewBtn = css`
-        border: solid 1px #ff2a70;
-        color: #ffffff;
-        background-color: #ff2a70;
-        height: 3em;
-        width: 8em;
-        font-weight: bold;
-        margin-bottom: 1em;
-        cursor: pointer;
+        @media (max-width: 600px) {
+            display: ${!gallery ? "block" : "none"};
+            text-align: center;
+        }
     `;
 
     const [images, setImages] = useState();
@@ -51,47 +39,39 @@ const Gallery = () => {
     return images ? (
         <section>
             <StyledHeading title="night club gallery" />
-            <ul css={imgList} ref={ref}>
-                {images?.map((image) =>
-                    inView ? (
-                        <Animated key={image.id} animationIn="fadeInLeft">
-                            <li key={image.id}>
-                                <img
-                                    css={galleryImg}
-                                    src={image.asset.url}
-                                    alt={image.description}
-                                />
-                            </li>
-                        </Animated>
-                    ) : (
-                        <li key={image.id}>
-                            <img
-                                css={galleryImg}
-                                src={image.asset.url}
-                                alt={image.description}
-                            />
-                        </li>
-                    )
-                )}
-            </ul>
+            {dimension.width > 600 ? (
+                <ul css={imgList} ref={ref}>
+                    {images?.map((image) =>
+                        inView ? (
+                            <Animated key={image.id} animationIn="fadeInLeft">
+                                <GalleryImgs image={image} gallery={gallery} />
+                            </Animated>
+                        ) : (
+                            <GalleryImgs image={image} gallery={gallery} />
+                        )
+                    )}
+                </ul>
+            ) : (
+                <ul css={imgList} ref={ref}>
+                    {images?.slice(0, 5).map((image) =>
+                        inView ? (
+                            <Animated key={image.id} animationIn="fadeInLeft">
+                                <GalleryImgs image={image} gallery={gallery} />
+                            </Animated>
+                        ) : (
+                            <GalleryImgs image={image} gallery={gallery} />
+                        )
+                    )}
+                </ul>
+            )}
             {gallery && (
                 <Carousel>
                     {images?.map((image) => (
-                        <li key={image.id}>
-                            <img
-                                css={galleryImg}
-                                src={image.asset.url}
-                                alt={image.description}
-                            />
-                        </li>
+                        <GalleryImgs image={image} gallery={gallery} />
                     ))}
                 </Carousel>
             )}
-            <section css={btnSection}>
-                <button css={viewBtn} onClick={() => setGallery(!gallery)}>
-                    {!gallery ? "View Gallery" : "Close Gallery"}
-                </button>
-            </section>
+            <GalleryBtn gallery={gallery} setGallery={setGallery} />
         </section>
     ) : (
         <CantLoad title="gallery" />
