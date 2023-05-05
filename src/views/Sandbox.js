@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+//import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Carousel from "react-multi-carousel";
+//import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 const Sandbox = () => {

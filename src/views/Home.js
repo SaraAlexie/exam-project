@@ -11,7 +11,7 @@ const Home = () => {
     return (
         <main>
             <Welcome />
-            <Events />
+            {<Events />}
             <Gallery />
             <Music />
             <Video />

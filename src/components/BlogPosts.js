@@ -14,9 +14,11 @@ const BlogPosts = () => {
     const [posts, setPosts] = useState();
 
     useEffect(() => {
-        axios(`http://localhost:4000/blogposts`).then((response) =>
-            setPosts(response.data)
-        );
+        axios(`http://localhost:4000/blogposts`)
+            .then((response) => setPosts(response.data))
+            .catch((error) => {
+                console.log(error);
+            });
     }, []);
 
     return posts ? (
