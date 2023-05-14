@@ -22,6 +22,7 @@ const EventCard = ({ event }) => {
         background-color: #ff2a70;
         padding: 0 0 0 1em;
         margin: 0;
+        width: 32.5em;
     `;
 
     const overlay = css`

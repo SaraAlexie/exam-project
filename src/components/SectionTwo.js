@@ -2,9 +2,11 @@
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../styles/eventslider.css";
 import EventCard from "./EventCard";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import CantLoad from "./CantLoad";
 
 const SectionTwo = () => {
@@ -19,48 +21,42 @@ const SectionTwo = () => {
         }
     `;
 
-    const responsive = {
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 2,
-            slidesToSlide: 2,
-        },
-        mobile: {
-            breakpoint: { max: 600, min: 0 },
-            items: 1,
-            slidesToSlide: 1,
-        },
-    };
-
-    const [autoPlay, setAutoPlay] = useState(true);
     const [events, setEvents] = useState();
 
     useEffect(() => {
-        axios(`http://localhost:4000/events`).then((response) =>
-            setEvents(response.data)
-        );
+        const fetchImages = async () => {
+            const response = await axios.get("http://localhost:4000/events");
+            setEvents(response.data);
+        };
+        fetchImages();
     }, []);
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        responsive: [
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    };
 
     return events ? (
         <section css={eventList}>
-            <Carousel
-                responsive={responsive}
-                infinite={true}
-                showDots={true}
-                arrows={false}
-                autoPlay={autoPlay}
-                onMouseOver={() => setAutoPlay(false)}
-            >
-                {events ? (
-                    events?.map((event) => (
-                        <ul key={event.id}>
-                            <EventCard event={event} />
-                        </ul>
-                    ))
-                ) : (
-                    <p>Can't load events at the moment...</p>
-                )}
-            </Carousel>
+            <Slider {...settings}>
+                {events?.map((event) => (
+                    <ul key={event.id}>
+                        <EventCard event={event} />
+                    </ul>
+                ))}
+            </Slider>
         </section>
     ) : (
         <CantLoad title="events" />
